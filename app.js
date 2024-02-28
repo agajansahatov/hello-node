@@ -1,5 +1,17 @@
-const path = require("path");
+import http from "http";
 
-var pathObj = path.parse(__filename);
+const server = http.createServer((req, res) => {
+    if(req.url === "/") {
+        res.write("Hello World!");
+        res.end();
+    }
 
-console.log(pathObj)
+    if(req.url === "/api/courses") {
+        res.write(JSON.stringify([1, 2, 3]));
+        res.end();
+    }
+});
+
+server.listen(80);
+
+console.log("Listening on port 80...");
