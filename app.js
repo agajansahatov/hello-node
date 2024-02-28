@@ -1,5 +1,5 @@
-function sayHello(name) {
-    console.log("Hello " + name);
-}
+const path = require("path");
 
-sayHello("Agajan");
+var pathObj = path.parse(__filename);
+
+console.log(pathObj)
