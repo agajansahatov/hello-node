@@ -1,17 +1,13 @@
-import http from "http";
+import express from "express";
 
-const server = http.createServer((req, res) => {
-    if(req.url === "/") {
-        res.write("Hello World!");
-        res.end();
-    }
+const app = express();
 
-    if(req.url === "/api/courses") {
-        res.write(JSON.stringify([1, 2, 3]));
-        res.end();
-    }
+app.get("/", (req, res) => {
+    res.send("Hello World!");
 });
 
-server.listen(80);
+app.get("/api/courses", (req, res) => {
+    res.send([1, 2, 3]);
+});
 
-console.log("Listening on port 80...");
+app.listen(80, () => console.log("Listening on port 80..."));
